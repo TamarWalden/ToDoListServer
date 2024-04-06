@@ -64,7 +64,6 @@ app.MapDelete("/{id}", async (int id, ToDoDbContext dbContext) =>
     var item = await dbContext.Items.FindAsync(id);
     if (item == null)
         return Results.NotFound();
-
     dbContext.Items.Remove(item);
     await dbContext.SaveChangesAsync();
     return Results.NoContent();
